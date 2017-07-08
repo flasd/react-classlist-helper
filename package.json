@@ -1,0 +1,42 @@
+{
+  "name": "react-classlist-helper",
+  "version": "0.0.0-alpha1",
+  "description": "Helper to defining multiple classes on a react component.",
+  "main": "./dist/react-classlist-helper.min.js",
+  "scripts": {
+    "test": "nyc --reporter=lcov mocha ./src/index.spec.js --compilers js:babel-core/register",
+    "lint": "eslint ./src/index.js",
+    "prebuild": "npm run lint && npm test",
+    "build:minified": "babel ./src/index.js -o ./dist/react-classlist-helper.min.js --sourcemaps inline --presets babili",
+    "build": "babel ./src/index.js -o ./dist/react-classlist-helper.js --sourcemaps inline && npm run build:minified"
+  },
+  "repository": {
+    "type": "git",
+    "url": "+git:https://github.com/flasd/react-classlist-helper.git"
+  },
+  "keywords": [
+    "react",
+    "className",
+    "classList",
+    "helper"
+  ],
+  "author": "Marcel Oliveira",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.25.0",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-preset-env": "^1.6.0",
+    "chai": "^4.0.2",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb-base": "^11.2.0",
+    "eslint-plugin-import": "^2.2.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.4.2",
+    "nyc": "^11.0.3"
+  },
+  "dependencies": {
+    "deepfreeze": "^2.0.0",
+    "lodash.isobject": "^3.0.2",
+    "lodash.isstring": "^4.0.1"
+  }
+}
