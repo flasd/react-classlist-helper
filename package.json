@@ -1,6 +1,6 @@
 {
   "name": "react-classlist-helper",
-  "version": "0.0.0-alpha1",
+  "version": "0.0.0",
   "description": "Helper to defining multiple classes on a react component.",
   "main": "./dist/react-classlist-helper.min.js",
   "scripts": {
