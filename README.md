@@ -1,13 +1,13 @@
 # React classList Helper
 Helper to defining multiple classes on a react component.
-[![Build Status](https://travis-ci.org/flasd/react-classlist-helper.svg?branch=master)](https://travis-ci.org/flasd/react-classlist-helper)[![Coverage Status](https://coveralls.io/repos/github/flasd/react-classlist-helper/badge.svg?branch=master)](https://coveralls.io/github/flasd/react-classlist-helper?branch=master)[![npm version](https://badge.fury.io/js/react-classlist-helper.svg)](https://badge.fury.io/js/react-classlist-helper)
+
+[![Build Status](https://travis-ci.org/flasd/react-classlist-helper.svg?branch=master)](https://travis-ci.org/flasd/react-classlist-helper) [![Coverage Status](https://coveralls.io/repos/github/flasd/react-classlist-helper/badge.svg?branch=master)](https://coveralls.io/github/flasd/react-classlist-helper?branch=master) [![npm version](https://badge.fury.io/js/react-classlist-helper.svg)](https://www.npmjs.com/package/react-classlist-helper)
 
 ## Getting up and running
 
 Add the latest version of react-classlist-helper to your package.json:
 ```
 npm install react-classlist-helper --save-dev
-
 ```
 Also available with Yarn:
 ```
