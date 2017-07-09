@@ -43,6 +43,8 @@ const isMobile = true;
 const classMap = {};
 classMap[mobileClass] = isMobile;
 classMap[desktopClass] = !isMobile;
+// { myAwesomeMobileClass: true, myDesktopClass: false }
+
 ...
 
 const Component = () => (
@@ -58,18 +60,18 @@ const Component = () => (
 If you have only one class to toggle based on a condition:
 ```javascript
 import { toggleClass } from 'react-classlist-helper';
+
 ...
+
 const isACOn = true;
 const coldClass = 'cool';
 
 const Component = () => (
     <div className={ toggleClass(coldClass, isACOn) } />
 );
-
 // <div class="cool"></div>
 
 isACOn = false;
-
 // <div class=""></div>
 
 ```
