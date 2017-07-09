@@ -1,53 +1,80 @@
 # React classList Helper
 Helper to defining multiple classes on a react component.
+[![Build Status](https://travis-ci.org/flasd/react-classlist-helper.svg?branch=master)](https://travis-ci.org/flasd/react-classlist-helper)[![Coverage Status](https://coveralls.io/repos/github/flasd/react-classlist-helper/badge.svg?branch=master)](https://coveralls.io/github/flasd/react-classlist-helper?branch=master)[![npm version](https://badge.fury.io/js/react-classlist-helper.svg)](https://badge.fury.io/js/react-classlist-helper)
 
 ## Getting up and running
 
-Install with a package manager of choice: 
+Add the latest version of react-classlist-helper to your package.json:
 ```
-    npm install react-classlist-helper --save-dev
-    // Or
-    yarn add react-classlist-helper --dev
+npm install react-classlist-helper --save-dev
+
+```
+Also available with Yarn:
+```
+yarn add react-classlist-helper --dev
 ```
 
-## Usage
-Import `classList` from `react-classlist-helper`. 
+## API
+
+#### classList
+Used to add multiple classes to an element:
+
 ```javascript
 import classList from 'react-classlist-helper';
+
 ...
-const Component = (props) => (
+
+const Component = () => (
     <div className={ classList(myCssClass1, myCssClass2, myCssClass3) } />
 );
 
 // <div class="myCssClass1 myCssClass2 myCssClass3"></div>
 ```
-##### ClassMap
 
-You can use it with a `ClassMap`. It's usefull for when you need to toggle a class based on a boolean condicion. A ClassMap has the following structure:
+Also works with Arrays `['className', 'className2']` and Objects `{ ClassName: boolean }`;
+
+Object form is usefull for creating conditional classes:
+
 ```javascript
-type ClassMap = {
-    className: boolean,
-    ...
-};
-```
-##### Usage:
-```javascript
-import classList from 'react-classlist-helper';
+const mobileClass = 'myAwesomeMobileClass';
+const desktopClass = 'myDesktopClass';
+const isMobile = true;
+
+const classMap = {};
+classMap[mobileClass] = isMobile;
+classMap[desktopClass] = !isMobile;
 ...
-const ClassMap = {
-    myAwesomeCssClass: true,
-    myBadCssClass: false,
-    myAwesomeCssClass2: true,
-    myAwesomeCssClass3: true,
-};
-const Component = (props) => (
-    <div className={ classList(ClassMap) } />
+
+const Component = () => (
+    <div className={ classList(classMap) } />
 );
 
-// <div class="myAwesomeCssClass myAwesomeCssClass2 myAwesomeCssClass3"></div>
+// <div class="myAwesomeMobileClass"></div>
+
 ```
 
-It prevent classes with `key: false` from beeing rendered.
+#### toggleClass
+
+If you have only when class to toggle based on a condition:
+```javascript
+import { toggleClass } from 'react-classlist-helper';
+...
+const isACOn = true;
+const coldClass = 'cool';
+
+const Component = () => (
+    <div className={ toggleClass(coldClass, isACOn) } />
+);
+
+// <div class="cool"></div>
+
+isACOn = false;
+
+// <div class=""></div>
+
+```
+
+Happy coding!
 
 ## MIT Licence
 Copyright 2017 Marcel Coelho.

@@ -4,7 +4,8 @@
   "description": "Helper to defining multiple classes on a react component.",
   "main": "./dist/react-classlist-helper.min.js",
   "scripts": {
-    "test": "nyc --reporter=lcov mocha ./src/index.spec.js --compilers js:babel-core/register",
+    "test": "nyc -x ./src/index.spec.js mocha ./src/index.spec.js --compilers js:babel-core/register ",
+    "cover": "npm test && nyc report -x ./src/index.spec.js --reporter=text-lcov | coveralls",
     "lint": "eslint ./src/index.js",
     "prebuild": "npm run lint && npm test",
     "build:minified": "babel --presets babili ./src/index.js -o ./dist/react-classlist-helper.min.js --sourcemaps inline",
@@ -28,6 +29,7 @@
     "babel-preset-babili": "^0.1.4",
     "babel-preset-env": "^1.6.0",
     "chai": "^4.0.2",
+    "coveralls": "^2.13.1",
     "eslint": "^3.19.0",
     "eslint-config-airbnb-base": "^11.2.0",
     "eslint-plugin-import": "^2.2.0",
