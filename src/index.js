@@ -3,7 +3,7 @@ import isObject from 'lodash.isobjectlike';
 import isString from 'lodash.isstring';
 import isUndefined from 'lodash.isundefined';
 
-export default function classList(...classes) {
+export function classList(...classes) {
     if (classes.length === 0) {
         return '';
     }
@@ -45,3 +45,5 @@ export function toggleClass(className, condition) {
 
     return classList(ClassMap);
 }
+
+export default classList;
