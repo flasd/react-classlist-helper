@@ -3,7 +3,7 @@ Helper to defining multiple classes on a react component.
 
 [![Build Status](https://travis-ci.org/flasd/react-classlist-helper.svg?branch=master)](https://travis-ci.org/flasd/react-classlist-helper) [![Coverage Status](https://coveralls.io/repos/github/flasd/react-classlist-helper/badge.svg?branch=master)](https://coveralls.io/github/flasd/react-classlist-helper?branch=master) [![npm version](https://badge.fury.io/js/react-classlist-helper.svg)](https://www.npmjs.com/package/react-classlist-helper)
 
-## Getting up and running
+## Getting it up and running
 
 Add the latest version of react-classlist-helper to your package.json:
 ```
@@ -16,7 +16,7 @@ yarn add react-classlist-helper --dev
 
 ## API
 
-#### classList
+### classList(class1: string | array | object, class2, class3, ...classN): string
 Used to add multiple classes to an element:
 
 ```javascript
@@ -53,9 +53,9 @@ const Component = () => (
 
 ```
 
-#### toggleClass
+### toggleClass(className: string, condition: boolean): string
 
-If you have only when class to toggle based on a condition:
+If you have only one class to toggle based on a condition:
 ```javascript
 import { toggleClass } from 'react-classlist-helper';
 ...
