@@ -7,7 +7,7 @@
     "test": "nyc --reporter=lcov mocha ./src/index.spec.js --compilers js:babel-core/register",
     "lint": "eslint ./src/index.js",
     "prebuild": "npm run lint && npm test",
-    "build:minified": "babel ./src/index.js -o ./dist/react-classlist-helper.min.js --sourcemaps inline --presets babili",
+    "build:minified": "babel --presets babili ./src/index.js -o ./dist/react-classlist-helper.min.js --sourcemaps inline",
     "build": "babel ./src/index.js -o ./dist/react-classlist-helper.js --sourcemaps inline && npm run build:minified"
   },
   "repository": {
@@ -25,6 +25,7 @@
   "devDependencies": {
     "babel-core": "^6.25.0",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-preset-babili": "^0.1.4",
     "babel-preset-env": "^1.6.0",
     "chai": "^4.0.2",
     "eslint": "^3.19.0",
