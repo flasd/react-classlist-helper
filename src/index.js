@@ -1,6 +1,8 @@
 import isObject from 'lodash.isobject';
 import isString from 'lodash.isstring';
 
+const err = new Error(`Expected className to be a string but instead got ${typeof className}`);
+
 export default function spred(...classes) {
     let classList = [];
 
@@ -12,10 +14,20 @@ export default function spred(...classes) {
                     classList = [...classList, key];
                 }
             });
-        } else {
+        } else if (isString(className)) {
             classList = [...classList, className];
+        } else {
+            throw err;
         }
     });
 
     return classList.join(' ');
+}
+
+export function toggleClass(shouldShow, className) {
+    if (className && isString(className)) {
+        return shouldShow ? className : '';
+    }
+
+    throw err;
 }
