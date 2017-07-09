@@ -1,33 +1,47 @@
-import isObject from 'lodash.isobject';
+import isBoolean from 'lodash.isboolean';
+import isObject from 'lodash.isobjectlike';
 import isString from 'lodash.isstring';
+import isUndefined from 'lodash.isundefined';
 
-const err = new Error(`Expected className to be a string but instead got ${typeof className}`);
+export default function classList(...classes) {
+    if (classes.length === 0) {
+        return '';
+    }
 
-export default function spred(...classes) {
-    let classList = [];
+    let classBuffer = [];
 
     classes.forEach((className) => {
-        if (isObject(className)) {
+        if (Array.isArray(className)) {
+            classBuffer = [...classBuffer, className.reduce((total, classItem) => `${total} ${classItem}`)];
+        } else if (isString(className)) {
+            classBuffer = [...classBuffer, className];
+        } else if (isObject(className)) {
             const keys = Object.keys(className);
+
             keys.forEach((key) => {
-                if (className[key] === true && isString(key)) {
-                    classList = [...classList, key];
+                if (className[key] === true) {
+                    classBuffer = [...classBuffer, key];
                 }
             });
-        } else if (isString(className)) {
-            classList = [...classList, className];
         } else {
-            throw err;
+            throw new Error(`Expected className to be a string but instead got ${typeof className}`);
         }
     });
 
-    return classList.join(' ');
+    return classBuffer.join(' ');
 }
 
-export function toggleClass(shouldShow, className) {
-    if (className && isString(className)) {
-        return shouldShow ? className : '';
+export function toggleClass(className, condition) {
+    if (isUndefined(className) || !isString(className)) {
+        throw new Error(`Expected className to be a string but instead got ${typeof className}`);
     }
 
-    throw err;
+    if (isUndefined(condition) || !isBoolean(condition)) {
+        throw new Error(`Expected condition to be a boolean value but instead got ${typeof condition}`);
+    }
+
+    const ClassMap = {};
+    ClassMap[className] = condition;
+
+    return classList(ClassMap);
 }
