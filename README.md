@@ -7,11 +7,11 @@ Helper to defining multiple classes on a react component.
 
 Add the latest version of react-classlist-helper to your package.json:
 ```
-npm install react-classlist-helper --save-dev
+npm install react-classlist-helper --save
 ```
 Also available with Yarn:
 ```
-yarn add react-classlist-helper --dev
+yarn add react-classlist-helper
 ```
 
 ## API
