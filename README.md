@@ -79,7 +79,7 @@ isACOn = false;
 
 ### classList (cL) and toggleClass (tC) aliases
 Wanna save some space? Use the alias:
-```
+```javascript
 import { cL, tC } from 'react-classlist-helper';
 
 ...
