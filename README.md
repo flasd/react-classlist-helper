@@ -9,7 +9,7 @@ Add the latest version of react-classlist-helper to your package.json:
 ```
 npm install react-classlist-helper --save
 ```
-Also available with Yarn:
+Also available in Yarn:
 ```
 yarn add react-classlist-helper
 ```
@@ -31,18 +31,19 @@ const Component = () => (
 // <div class="myCssClass1 myCssClass2 myCssClass3"></div>
 ```
 
-Also works with Arrays `['className', 'className2']` and Objects `{ ClassName: boolean }`;
+It also works with Arrays `['className', 'className2', ...]` and Objects `{ ClassName: boolean, ... }`;
 
-Object form is usefull for creating conditional classes:
+The Object form is usefull for creating conditional classes:
 
 ```javascript
 const mobileClass = 'myAwesomeMobileClass';
 const desktopClass = 'myDesktopClass';
 const isMobile = true;
 
-const classMap = {};
-classMap[mobileClass] = isMobile;
-classMap[desktopClass] = !isMobile;
+const classMap = {
+    myAwesomeMobileClass: isMobile,
+    myDesktopClass: !isMobile,
+};
 // { myAwesomeMobileClass: true, myDesktopClass: false }
 
 ...
@@ -64,16 +65,35 @@ import { toggleClass } from 'react-classlist-helper';
 ...
 
 const isACOn = true;
-const coldClass = 'cool';
+const coolClass = 'cool';
 
 const Component = () => (
-    <div className={ toggleClass(coldClass, isACOn) } />
+    <div className={ toggleClass(coolClass, isACOn) } />
 );
 // <div class="cool"></div>
 
 isACOn = false;
 // <div class=""></div>
 
+```
+
+### classList (cL) and toggleClass (tC) aliases
+Wanna save some space? Use the alias:
+```
+import { cL, tC } from 'react-classlist-helper';
+
+...
+
+const myCond = true;
+const myClass = 'dangerZone';
+
+const someClasses = ['something', 'something'];
+
+const Component = () => (
+    <div className={ cl(someClasses, tC(myClass, myCond)) } />
+);
+
+// <div class="something something dangerZone"></div>
 ```
 
 Happy coding!

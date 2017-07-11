@@ -35,7 +35,7 @@ export function classList(...args) {
         }
     });
 
-    return classBuffer.join(' ');
+    return classBuffer.join(' ').trim();
 }
 
 /**
