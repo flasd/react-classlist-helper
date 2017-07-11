@@ -61,6 +61,9 @@ export function toggleClass(className, condition) {
     return classList(ClassMap);
 }
 
+export const cL = classList;
+export const tC = toggleClass;
 
 const defaultFunc = classList;
+
 export default defaultFunc;

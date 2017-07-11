@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 
-import { classList, toggleClass } from './index';
+import { classList, toggleClass, cL, tC } from './index';
 
 
 describe('React classList Function', () => {
@@ -121,6 +121,24 @@ describe('React toggleClass Function', () => {
         expect(() => toggleClass('a')).to.throw();
         expect(() => toggleClass(2, true)).to.throw();
         expect(() => toggleClass('', '')).to.throw();
+    });
+
+});
+
+describe('React classList alias', () => {
+
+    it('should be defined and be the classList function', () => {
+        expect(cL).to.equal(classList);
+        expect(cL).to.be.a('function');
+    });
+
+});
+
+describe('React toggleClass alias', () => {
+
+    it('should be defined and be the toggleClass function', () => {
+        expect(tC).to.equal(toggleClass);
+        expect(tC).to.be.a('function');
     });
 
 });
