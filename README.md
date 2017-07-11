@@ -16,7 +16,7 @@ yarn add react-classlist-helper --dev
 
 ## API
 
-### classList(class1: string | array | object, class2, class3, ...classN): string
+### classList(class1: (string || array || object), class2, ...classN): string
 Used to add multiple classes to an element:
 
 ```javascript

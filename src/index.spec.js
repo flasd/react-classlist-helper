@@ -1,7 +1,6 @@
 import { expect } from 'chai';
 
-import classList from './index';
-import { toggleClass } from './index';
+import { classList, toggleClass } from './index';
 
 
 describe('React classList Function', () => {
@@ -76,12 +75,13 @@ describe('React classList Function', () => {
     it('should throw an error when something other than a string/object/array is passed', () => {
         expect(() => classList(2)).to.throw();
         expect(() => classList(1, 'string')).to.throw();
+        expect(() => classList(undefined)).to.throw();
     });
 
     it('should handle empty inputs gracefully', () => {
-        const output = classList();
         const expectedOutput = '';
-
+        const output = classList();
+        
         expect(output).to.equal(expectedOutput);
         expect(output).to.be.a('string');
     });

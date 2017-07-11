@@ -3,16 +3,23 @@ import isObject from 'lodash.isobjectlike';
 import isString from 'lodash.isstring';
 import isUndefined from 'lodash.isundefined';
 
-export function classList(...classes) {
-    if (classes.length === 0) {
+
+/**
+ * Spred css class names provided as input
+ *
+ * @param      {Array}   args  The classe's names.
+ * @return     {string}  final className
+ */
+export function classList(...args) {
+    if (args.length === 0) {
         return '';
     }
 
     let classBuffer = [];
 
-    classes.forEach((className) => {
+    args.forEach((className) => {
         if (Array.isArray(className)) {
-            classBuffer = [...classBuffer, className.reduce((total, classItem) => `${total} ${classItem}`)];
+            classBuffer = [...classBuffer, className.reduce((total, curItem) => `${total} ${curItem}`)];
         } else if (isString(className)) {
             classBuffer = [...classBuffer, className];
         } else if (isObject(className)) {
@@ -31,6 +38,14 @@ export function classList(...classes) {
     return classBuffer.join(' ');
 }
 
+/**
+ * Toggle a class based on a condition.
+ *
+ * @param      {string}   className  The class name
+ * @param      {boolean}  condition  The condition
+ * @return     {string}   if condition is true, returns the string, if false,
+ *                        returns empty string
+ */
 export function toggleClass(className, condition) {
     if (isUndefined(className) || !isString(className)) {
         throw new Error(`Expected className to be a string but instead got ${typeof className}`);
@@ -46,4 +61,6 @@ export function toggleClass(className, condition) {
     return classList(ClassMap);
 }
 
-export default classList;
+
+const defaultFunc = classList;
+export default defaultFunc;
