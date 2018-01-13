@@ -8,8 +8,7 @@
     "cover": "nyc report -x ./src/**/*.spec.js --reporter=text-lcov | coveralls",
     "lint": "eslint ./src/index.js",
     "prebuild": "npm run lint && npm test",
-    "build:minified": "cross-env NODE_ENV=production babel --presets babili ./src/index.js -o ./dist/react-classlist-helper.min.js --ignore spec.js",
-    "build": "cross-env NODE_ENV=production babel src -o ./dist/react-classlist-helper.js --ignore spec.js && npm run build:minified"
+    "build": "cross-env NODE_ENV=production babel src -o ./dist/react-classlist-helper.js --ignore spec.js"
   },
   "repository": {
     "type": "git",
@@ -26,10 +25,8 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.25.0",
+    "babel-minify-webpack-plugin": "^0.2.0",
     "babel-plugin-loop-optimizer": "^1.4.1",
-    "babel-plugin-transform-es2015-modules-umd": "^6.24.1",
-    "babel-plugin-transform-object-rest-spread": "^6.23.0",
-    "babel-preset-babili": "^0.1.4",
     "babel-preset-env": "^1.6.0",
     "chai": "^4.0.2",
     "coveralls": "^2.13.1",
@@ -39,7 +36,9 @@
     "eslint-plugin-import": "^2.2.0",
     "istanbul": "^0.4.5",
     "mocha": "^3.4.2",
-    "nyc": "^11.0.3"
+    "nyc": "^11.0.3",
+    "webpack": "^3.10.0",
+    "webpack-merge": "^4.1.1"
   },
   "dependencies": {},
   "nyc": {
