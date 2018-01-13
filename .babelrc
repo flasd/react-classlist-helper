@@ -1,4 +1,32 @@
 {
-    "presets": ["env"],
-    "plugins": ["transform-object-rest-spread"]
+    "env": {
+        "test": {
+            "presets": [
+                [
+                    "env",
+                    {
+                        "targets": {
+                            "node": "current"
+                        }
+                    }
+                ]
+            ]
+        },
+
+        "production": {
+            "presets": [
+                [
+                    "env",
+                    {
+                        "targets": {
+                            "browsers": "> 1%, last 2 versions, ie 8"
+                        }
+                    }
+                ]
+            ],
+            "plugins": [
+                "babel-plugin-loop-optimizer"
+            ]
+        }
+    }
 }

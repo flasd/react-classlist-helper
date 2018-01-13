@@ -1,8 +1,9 @@
-import isBoolean from 'lodash.isboolean';
-import isObject from 'lodash.isobjectlike';
-import isString from 'lodash.isstring';
-import isUndefined from 'lodash.isundefined';
-
+import {
+    isBoolean,
+    isObject,
+    isString,
+    isUndefined,
+} from './assertions';
 
 /**
  * Spred css class names provided as input
