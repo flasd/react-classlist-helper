@@ -1,12 +1,13 @@
+/* eslint-env node,mocha */
 import { expect } from 'chai';
 
 import { classList, toggleClass, cL, tC } from './index';
 
 
 describe('React classList Function', () => {
-
     it('should be defined without any erros', () => {
         expect(classList).to.be.a('function');
+        // eslint-disable-next-line no-unused-expressions
         expect(classList).to.be.ok;
     });
 
@@ -81,7 +82,7 @@ describe('React classList Function', () => {
     it('should handle empty inputs gracefully', () => {
         const expectedOutput = '';
         const output = classList();
-        
+
         expect(output).to.equal(expectedOutput);
         expect(output).to.be.a('string');
     });
@@ -90,9 +91,9 @@ describe('React classList Function', () => {
 
 
 describe('React toggleClass Function', () => {
-
     it('should be defined without any erros', () => {
         expect(classList).to.be.a('function');
+        // eslint-disable-next-line no-unused-expressions
         expect(classList).to.be.ok;
     });
 
@@ -122,23 +123,18 @@ describe('React toggleClass Function', () => {
         expect(() => toggleClass(2, true)).to.throw();
         expect(() => toggleClass('', '')).to.throw();
     });
-
 });
 
 describe('React classList alias', () => {
-
     it('should be defined and be the classList function', () => {
         expect(cL).to.equal(classList);
         expect(cL).to.be.a('function');
     });
-
 });
 
 describe('React toggleClass alias', () => {
-
     it('should be defined and be the toggleClass function', () => {
         expect(tC).to.equal(toggleClass);
         expect(tC).to.be.a('function');
     });
-
 });
