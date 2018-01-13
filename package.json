@@ -2,14 +2,14 @@
   "name": "react-classlist-helper",
   "version": "1.3.0",
   "description": "Helper to defining multiple classes on a react component.",
-  "main": "./src/index.js",
+  "main": "./dist/react-classlist-helper.min.js",
   "scripts": {
-    "test": "nyc -x ./src/index.spec.js mocha ./src/index.spec.js --compilers js:babel-core/register ",
-    "cover": "npm test && nyc report -x ./src/index.spec.js --reporter=text-lcov | coveralls",
+    "test": "cross-env NODE_ENV=test nyc -x src/**/*.spec.js mocha src/**/*.spec.js --require babel-core/register",
+    "cover": "nyc report -x ./src/**/*.spec.js --reporter=text-lcov | coveralls",
     "lint": "eslint ./src/index.js",
     "prebuild": "npm run lint && npm test",
-    "build:minified": "babel --presets babili ./src/index.js -o ./dist/react-classlist-helper.min.js --sourcemaps inline",
-    "build": "babel ./src/index.js -o ./dist/react-classlist-helper.js --sourcemaps inline && npm run build:minified"
+    "build:minified": "cross-env NODE_ENV=production babel --presets babili ./src/index.js -o ./dist/react-classlist-helper.min.js --ignore spec.js",
+    "build": "cross-env NODE_ENV=production babel src -o ./dist/react-classlist-helper.js --ignore spec.js && npm run build:minified"
   },
   "repository": {
     "type": "git",
@@ -24,12 +24,16 @@
   "author": "Marcel Oliveira",
   "license": "MIT",
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.25.0",
+    "babel-plugin-loop-optimizer": "^1.4.1",
+    "babel-plugin-transform-es2015-modules-umd": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-preset-babili": "^0.1.4",
     "babel-preset-env": "^1.6.0",
     "chai": "^4.0.2",
     "coveralls": "^2.13.1",
+    "cross-env": "^5.1.3",
     "eslint": "^3.19.0",
     "eslint-config-airbnb-base": "^11.2.0",
     "eslint-plugin-import": "^2.2.0",
@@ -37,12 +41,7 @@
     "mocha": "^3.4.2",
     "nyc": "^11.0.3"
   },
-  "dependencies": {
-    "lodash.isboolean": "^3.0.3",
-    "lodash.isobjectlike": "^4.0.0",
-    "lodash.isstring": "^4.0.1",
-    "lodash.isundefined": "^3.0.1"
-  },
+  "dependencies": {},
   "nyc": {
     "include": [
       "src/index.js"
