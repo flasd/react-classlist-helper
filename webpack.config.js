@@ -17,6 +17,7 @@ const babelLoader = {
 
 const base = {
     entry: './src/index',
+
     output: {
         path: resolve('dist'),
         library: 'reactClasslistHelper',
@@ -30,9 +31,8 @@ const base = {
     },
 
     plugins: [
-        new webpack.EnvironmentPlugin(['NODE_ENV'])
+        new webpack.EnvironmentPlugin(['NODE_ENV']),
     ],
-    devtool: 'source-map',
 };
 
 module.exports = [
